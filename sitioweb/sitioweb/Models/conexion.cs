@@ -4,11 +4,11 @@ namespace sitioweb.Models
 {
     public class Conexion
     {
-        public static MySqlConnection? Connexion()
+        public static MySqlConnection Connexion()
         {
             String bd = "formulario";
             String servidor = "localhost";
-            string puerto = "3309";
+            String puerto = "3309";
             String usuario = "root";
             String password = "root";
 

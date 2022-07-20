@@ -1,32 +1,40 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace sitioweb.Models
 {
     public class Validar
     {
-        public Usuarios PorUsuario(String usuario)
+        public Usuarios PorUsuario(String usuario, String clave)
         {
-            MySqlDataReader reader;
             MySqlConnection conexionDB = Conexion.Connexion();
-            conexionDB.Open();
 
-            String sql = "SELECT * FROM cliente";
+            String sql = "SELECT * FROM usuario where usuario = @pusuario and password = @pclave";
             MySqlCommand cmd = new(sql, conexionDB);
-            cmd.Parameters.AddWithValue("usuario", usuario);
+            cmd.Parameters.AddWithValue("@pusuario", usuario);
+            cmd.Parameters.AddWithValue("@pclave", clave);
+            cmd.CommandType = CommandType.Text;
 
-            reader = cmd.ExecuteReader();
+            //reader = cmd.ExecuteReader();
+            
+            conexionDB.Open();
 
             Usuarios usr = null;
 
-            while (reader.Read())
+            using (MySqlDataReader dr = cmd.ExecuteReader())
+            {
+            while (dr.Read())
             {
                 usr = new Usuarios();
-                usr.Id = int.Parse(reader["id"].ToString());
-                usr.Nombre = reader["nombre"].ToString();
-                usr.Password = reader["pass"].ToString();
+                //usr.Id = int.Parse(dr["id"].ToString());
+                usr.Usuario = dr["usuario"].ToString();
+                usr.Password = dr["password"].ToString();
             }
             return usr;
+
+            }
+
         }
         [HttpPost]
         public String ctrlLogin(String usuario, String contraseña)
@@ -41,7 +49,7 @@ namespace sitioweb.Models
             }
             else
             {
-                datosUsuarios = validar.PorUsuario(usuario);
+                datosUsuarios = validar.PorUsuario(usuario, contraseña);
                 if (datosUsuarios == null)
                 {
                     respuesta = "el usuario no existe";

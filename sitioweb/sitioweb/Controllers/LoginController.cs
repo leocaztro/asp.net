@@ -14,18 +14,13 @@ namespace sitioweb.Controllers
         [HttpPost]
         public IActionResult Validar(String usuario, String contraseña)
         {
-            try
-            {
-                Validar ctrl = new Validar();
-                String respuesta = ctrl.ctrlLogin(usuario, contraseña);
-                if (respuesta.Length > 0)
-                {
-                }
-            }
-            catch (Exception ex)
-            {
+            Usuarios obj = new Validar().PorUsuario(usuario, contraseña);
 
+            if (obj.Usuario != null)
+            {
+                return RedirectToAction("page","Cliente");
             }
+
             return View();
         }
     }

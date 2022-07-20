@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace sitioweb.Models
+namespace sitioweb.Controllers
 {
     public class CrudController : Controller
     {
