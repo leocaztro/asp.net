@@ -40,6 +40,9 @@
     <Content Remove="wwwroot\img\testimonials\testimonials-4.jpg" />
     <Content Remove="wwwroot\img\testimonials\testimonials-5.jpg" />
     <Content Remove="wwwroot\js\main.js" />
+    <Content Remove="wwwroot\static\css\user-form.css" />
+    <Content Remove="wwwroot\static\img\AGRICULTURA.jpg" />
+    <Content Remove="wwwroot\static\img\background.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -118,6 +121,9 @@
     <None Include="wwwroot\img\testimonials\testimonials-4.jpg" />
     <None Include="wwwroot\img\testimonials\testimonials-5.jpg" />
     <None Include="wwwroot\js\main.js" />
+    <None Include="wwwroot\static\css\user-form.css" />
+    <None Include="wwwroot\static\img\AGRICULTURA.jpg" />
+    <None Include="wwwroot\static\img\background.jpg" />
     <None Include="wwwroot\vendor1\bootstrap\js\bootstrap.bundle.js" />
     <None Include="wwwroot\vendor1\bootstrap\js\bootstrap.bundle.js.map" />
     <None Include="wwwroot\vendor1\bootstrap\js\bootstrap.bundle.min.js" />
