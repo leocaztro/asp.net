@@ -10,7 +10,7 @@ namespace sitioweb.Models
         {
             MySqlConnection conexionDB = Conexion.Connexion();
 
-            String sql = "SELECT * FROM usuario where usuario = @pusuario and password = @pclave";
+            String sql = "SELECT * FROM cliente where usuario = @pusuario and pass = @pclave";
             MySqlCommand cmd = new(sql, conexionDB);
             cmd.Parameters.AddWithValue("@pusuario", usuario);
             cmd.Parameters.AddWithValue("@pclave", clave);
@@ -26,10 +26,9 @@ namespace sitioweb.Models
             {
             while (dr.Read())
             {
-                usr = new Usuarios();
-                //usr.Id = int.Parse(dr["id"].ToString());
-                usr.Usuario = dr["usuario"].ToString();
-                usr.Password = dr["password"].ToString();
+                    usr = new Usuarios();
+                    usr.Usuario = dr["usuario"].ToString();
+                    usr.Password = dr["pass"].ToString();
             }
             return usr;
 
