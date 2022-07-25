@@ -18,7 +18,11 @@ namespace sitioweb.Controllers
 
             if (obj.Usuario != null)
             {
-                return RedirectToAction("page","Cliente");
+                return RedirectToAction("page","admin");
+            }
+            else
+            {
+                Console.WriteLine("usuario incorrecto");
             }
 
             return View();
