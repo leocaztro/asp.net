@@ -1,8 +1,10 @@
 ﻿@{
 	@using sitioweb.Models;
-	@using MySql.Data.MySqlClient;
-	Layout = null;
+    @using MySql.Data.MySqlClient;
+    Layout = null;
 
+    List<semilla> lista = new List<semilla>();
+    ctrlProductos _ctrlProductos = new ctrlProductos();
 
 	MySqlConnection conexionDB = Conexion.Connexion();
 	String sql = "SELECT * FROM semilla";
@@ -121,7 +123,7 @@
 								<h4>ingrese datos:</h4>
 							</div>
 							<div class="card-body">
-								<form class="form" role="form" autocomplete="off" action="CRUD/insertar.php" method="POST">
+								<form class="form" role="form" autocomplete="off" action="/Crud/ingresar" method="POST">
 									<div class="form-group row text-center">
 										<label class="col-lg-4 col-form-label form-control-label">Codigo semilla:</label>
 										<div class="col-lg-6 text-center">
@@ -137,7 +139,6 @@
 									<div class="form-group row text-center">
 										<label class="col-lg-4 col-form-label form-control-label">descripcion:</label>
 										<div class="col-lg-6 text-center">
-											<!--<input class="form-control" type="text" name="descrip">-->
 											<textarea name="descrip" class="form-control"></textarea>
 										</div>
 									</div>

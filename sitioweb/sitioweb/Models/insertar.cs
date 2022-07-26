@@ -4,30 +4,37 @@ namespace sitioweb.Models
 {
     public class insertar
     {
-        public void ctrinsertr(int cod, String nombre, String descrip, int precio)
+        public void Ctrlinsertar(int cod, String nombre, String descrip, int precio)
         {
-            MySqlConnection conexionDB = Conexion.Connexion();
+            int retorno = 0;
             String sql = "INSERT INTO semilla (id, nombre, descripcion, precio) VALUES ('" + cod + "', '" + nombre + "', '" + descrip + "', '" + precio + "')";
 
+            MySqlConnection conexionDB = Conexion.Connexion();
             conexionDB.Open();
-
             try
             {
                 MySqlCommand cmd = new(sql, conexionDB);
-                cmd.ExecuteNonQuery();
+                retorno = cmd.ExecuteNonQuery();
+
 
             }
             catch (Exception exe)
             {
                 Console.WriteLine("ERROR AL GUARDAR" + exe.Message);
             }
+            finally
+            {
+                conexionDB.Close();
+            }
+
         }
 
-        public class limpiar{
-        
-            
-        
+        public class limpiar
+        {
+
+
+
         }
-        
+
     }
 }
