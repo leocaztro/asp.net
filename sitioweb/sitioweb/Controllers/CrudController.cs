@@ -35,6 +35,56 @@ namespace sitioweb.Controllers
 
             return RedirectToAction("Index", "Crud");
         }
+        //[HttpPost]
+        public IActionResult borrar(int id)
+        {
+            string sql = "DELETE FROM semilla WHERE id='" + id + "'";
 
+            MySqlConnection conexionDB = Conexion.Connexion();
+            conexionDB.Open();
+            Console.WriteLine("Registro eliminado Correctamene");
+            try
+            {
+                MySqlCommand cmd = new(sql, conexionDB);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception exec)
+            {
+                Console.WriteLine("ERROR AL ELIMINAR " + exec.Message);
+            }
+            finally
+            {
+                conexionDB.Close();
+            }
+
+            return RedirectToAction("Index", "Crud");
+        }
+
+        public IActionResult viewUpdate()
+        {
+            return View();
+        }
+
+        public IActionResult update(int cod, String nombre, String descrip, int precio)
+        {
+            string sql = "UPDATE semilla SET id ='" + cod + "', nombre ='" + nombre + "', descripcion ='" + descrip + "', precio ='" + precio + "'";
+            MySqlConnection conexionDB = Conexion.Connexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand cmd = new(sql, conexionDB);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception execp)
+            {
+                Console.WriteLine("ERROR AL ACTUALIZAR " + execp.Message);
+            }
+            finally
+            {
+                conexionDB.Close();
+            }
+
+            return RedirectToAction("actualizar", "Crud");
+        }
     }
 }
