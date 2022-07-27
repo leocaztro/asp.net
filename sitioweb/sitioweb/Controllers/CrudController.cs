@@ -69,8 +69,6 @@ namespace sitioweb.Controllers
             {
                 MySqlCommand cmd = new(sql, conexionDB);
                 cmd.ExecuteNonQuery();
-
-
             }
             catch (Exception exe)
             {
@@ -83,7 +81,6 @@ namespace sitioweb.Controllers
 
             return RedirectToAction("Index", "Crud");
         }
-        //[HttpGet]
         public IActionResult borrar(int id)
         {
             string sql = "DELETE FROM semilla WHERE id='" + id + "'";
