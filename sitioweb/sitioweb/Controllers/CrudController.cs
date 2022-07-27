@@ -35,7 +35,7 @@ namespace sitioweb.Controllers
 
             return RedirectToAction("Index", "Crud");
         }
-        //[HttpPost]
+        //[HttpGet]
         public IActionResult borrar(int id)
         {
             string sql = "DELETE FROM semilla WHERE id='" + id + "'";
@@ -59,10 +59,26 @@ namespace sitioweb.Controllers
 
             return RedirectToAction("Index", "Crud");
         }
-
-        public IActionResult viewUpdate()
+        public IActionResult Buscar(int id)
         {
-            return View();
+            string sql = "UPDATE semilla SET id ='" + cod + "', nombre ='" + nombre + "', descripcion ='" + descrip + "', precio ='" + precio + "'";
+            MySqlConnection conexionDB = Conexion.Connexion();
+            conexionDB.Open();
+            try
+            {
+                MySqlCommand cmd = new(sql, conexionDB);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception execp)
+            {
+                Console.WriteLine("ERROR AL ACTUALIZAR " + execp.Message);
+            }
+            finally
+            {
+                conexionDB.Close();
+            }
+
+            return RedirectToAction("actualizar", "Crud");
         }
 
         public IActionResult update(int cod, String nombre, String descrip, int precio)

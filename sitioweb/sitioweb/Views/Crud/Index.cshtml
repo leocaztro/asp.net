@@ -89,35 +89,33 @@
 											{
 												row = new semilla();
 
-													<tr>
-														<th>@{
+														<tr>
+															<th>@{
 															row.Id = int.Parse(dr["id"].ToString());
-															
-															System.Console.WriteLine(row.Id = int.Parse(dr["id"].ToString()));
-															}
-														</th>
-														<th>@{
+																}
+															@row.Id
+															</th>
+															<th>@{
 															row.Nombre = dr["nombre"].ToString();
-															Console.WriteLine(row.Nombre);
-															}
-														</th>
-														<th>@{
+																}
+															@row.Nombre
+															</th>
+															<th>@{
 															row.Descripcion = dr["descripcion"].ToString();
-															Console.WriteLine(row.Descripcion);
-															}
-														</th>
-													<th>$@{
+																}
+															@row.Descripcion
+															</th>
+														<th>$@{
 															row.Precio = int.Parse(dr["precio"].ToString());
-															Console.WriteLine(row.Precio);
-														}
-													</th>
-																<td>
-																	<a href="actualizar.php?id=<?php echo $row['ID_SEMILLA'] ?>"><i class="fas fa-edit"></i></a> |
-																	<!--- <a href="CRUD/delete.php?id=<?php echo $row['ID_SEMILLA'] ?>"><i class="fas fa-user-times"></i></a>--->
-																	<a href="/Crud/Borrar?id=@{ row.Id = int.Parse(dr["id"].ToString()); }"><i class="fas fa-user-times"></i></a>
-																	<!--- <a href="/Crud/borrar"><i class="fas fa-user-times"></i></a> --->
-																</td>
-															</tr>
+															  }
+															@row.Precio
+														</th>
+																	<td>
+																		<!--- <a href="actualizar.php?id=<?php echo $row['ID_SEMILLA'] ?>"><i class="fas fa-edit"></i></a> |--->
+																		<a href="~/Crud/update/"><i class="fas fa-edit"></i></a> |
+																		<a href="~/Crud/Borrar/@row.Id"><i class="fas fa-user-times"></i></a>
+																	</td>
+																</tr>
 											}
 										}
 											
