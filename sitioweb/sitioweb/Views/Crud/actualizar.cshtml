@@ -1,16 +1,26 @@
-<?php
-include("connetdb/conexion.php");
-$con = conectar();
-/**
- * se captura la id y que nos muestre la informacion de esa id para modificar
- */
-$id = $_GET['id'];
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+	@using sitioweb.Models;
+	@using MySql.Data.MySqlClient;
 
-$sql = "SELECT * FROM semilla WHERE ID_SEMILLA='$id'";
-$query = mysqli_query($con, $sql);
+	int codigo = ViewData.Model;
 
-$row = mysqli_fetch_array($query);
-?>
+	MySqlConnection conexionDB = Conexion.Connexion();
+	string sql = "SELECT id, codigo, nombre, descripcion, precio, cantidad FROM productos WHERE codigo LIKE '" + codigo + "' LIMIT 1";
+	MySqlCommand cmd = new(sql, conexionDB);
+	conexionDB.Open();
+	MySqlDataReader reader = null;
+	reader = cmd.ExecuteReader();
+	semilla row = null;
+	row = new semilla();
+	row.Id = int.Parse(reader.GetString(0));
+    row.Nombre = reader.GetString(1);
+    row.Descripcion = reader.GetString(2);
+    row.Precio = int.Parse(reader.GetString(3));
+}
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -31,7 +41,8 @@ $row = mysqli_fetch_array($query);
 	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
 	<!-- Nuestro css-->
-	<link rel="stylesheet" type="text/css" href="static/css/user-form.css" th:href="@{/css/user-form.css}">
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="~/static/css/user-form.css" th:href="~/static/css/user-form.css">
 	<!-- DATA TABLE -->
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
@@ -65,7 +76,7 @@ $row = mysqli_fetch_array($query);
 								<div class="form-group row text-center">
 									<label class="col-lg-4 col-form-label form-control-label">Codigo semilla:</label>
 									<div class="col-lg-6 text-center">
-										<input class="form-control" type="text" readonly name="cod" value="<?php echo $row['ID_SEMILLA'] ?>">
+										<input class="form-control" type="text" readonly name="cod" value="@row.Id">
 									</div>
 								</div>
 								<div class="form-group row text-center">

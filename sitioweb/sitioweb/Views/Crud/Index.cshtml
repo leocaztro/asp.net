@@ -3,9 +3,6 @@
 	@using MySql.Data.MySqlClient;
     Layout = null;
 
-    List<semilla> lista = new List<semilla>();
-    ctrlProductos _ctrlProductos = new ctrlProductos();
-
 	MySqlConnection conexionDB = Conexion.Connexion();
 	String sql = "SELECT * FROM semilla";
 	MySqlCommand cmd = new(sql, conexionDB);
@@ -112,7 +109,7 @@
 														</th>
 																	<td>
 																		<!--- <a href="actualizar.php?id=<?php echo $row['ID_SEMILLA'] ?>"><i class="fas fa-edit"></i></a> |--->
-																		<a href="~/Crud/update/"><i class="fas fa-edit"></i></a> |
+																		<a href="~/Crud/Actualizar/@row.Id"><i class="fas fa-edit"></i></a> |
 																		<a href="~/Crud/Borrar/@row.Id"><i class="fas fa-user-times"></i></a>
 																	</td>
 																</tr>

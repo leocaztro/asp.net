@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Crud\actualizar.cshtml" />
     <Content Remove="wwwroot\css\style.css" />
     <Content Remove="wwwroot\img\about.jpg" />
     <Content Remove="wwwroot\img\apple-touch-icon.png" />
@@ -47,7 +46,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Crud\actualizar.cshtml" />
     <None Include="wwwroot\assets\js\main.js" />
     <None Include="wwwroot\assets\vendor\aos\aos.js" />
     <None Include="wwwroot\assets\vendor\bootstrap-icons\fonts\bootstrap-icons.woff2" />
