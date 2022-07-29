@@ -15,8 +15,7 @@
      <!--Bootsatrap que hay que agregar-->
   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
   <!-- Favicons -->
-  <link rel="icon" type="image/jpg" href="http://www.inacap.cl/inacapmovil/static/Isotipo.jpg" sizes="32x32">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="icon" type="image/jpg" href="~/assets/img/logo-img-inacap.jpg" sizes="32x32">
 
   <!-- Google Fonts -->
   <link
@@ -65,23 +64,21 @@
                     <li><a class="nav-link scrollto active" href="#hero">PRINCIPAL</a></li>
                     <li><a class="nav-link scrollto" href="#about">QUIÉNES SOMOS</a></li>
                     <li><a class="nav-link scrollto" href="#services">PRODUCTOS</a></li>
-                    <li><a class="nav-link scrollto " href="../pagina_compra/index.php">TIENDA VIRTUAL</a></li>
                     <li><a class="nav-link scrollto" href="#team">EQUIPO</a></li>
 
 
                     <li class="dropdown"><a href="#"><span>Cuenta</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a><?php echo $usuario?></a></li>
                             <li><a class="nav-link scrollto" asp-area="" asp-controller="Crud" asp-action="index">administrar registro</a></li>
-                            <li><a href="../pagina_compra/index.php">ver tienda virtual</a></li>
-                            <li><a href="../../controller/cerrarsession.php">Cerrar Session</a></li>
+                            
+                            <li><a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="index">Cerrar Session</a></li>
                         </ul>
                     </li>
 
                     <li><a class="nav-link scrollto" href="#contact">CONTÁCTENOS</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
+            </nav><!-- navbar -->
 
         </div>
     </header><!-- End Header -->

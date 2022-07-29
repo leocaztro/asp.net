@@ -18,14 +18,15 @@ namespace sitioweb.Controllers
 
             if (obj.Usuario != null)
             {
-                return RedirectToAction("page","admin");
+                return RedirectToAction("page", "admin");
             }
             else
             {
                 Console.WriteLine("usuario incorrecto");
+                return RedirectToAction("login", "Login");
             }
 
-            return View();
+            //return View();
         }
     }
 }

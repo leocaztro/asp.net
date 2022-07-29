@@ -59,9 +59,9 @@ namespace sitioweb.Controllers
         //}
 
         [HttpPost]
-        public IActionResult ingresar(int cod, String nombre, String descrip, int precio)
+        public IActionResult ingresar(int cod, String nombre, String descrip, int precio, int Stock)
         {
-            String sql = "INSERT INTO semilla (id, nombre, descripcion, precio) VALUES ('" + cod + "', '" + nombre + "', '" + descrip + "', '" + precio + "')";
+            String sql = "INSERT INTO semilla (id, nombre, descripcion, precio, stock) VALUES ('" + cod + "', '" + nombre + "', '" + descrip + "', '" + precio + "', '" + Stock + "')";
 
             MySqlConnection conexionDB = Conexion.Connexion();
             conexionDB.Open();

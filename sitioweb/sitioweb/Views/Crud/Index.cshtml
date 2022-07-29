@@ -24,6 +24,9 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
+	 <!-- Favicons -->
+	<link rel="icon" type="image/jpg" href="~/assets/img/logo-img-inacap.jpg" sizes="32x32">
+
 	<!-- Los iconos tipo Solid de Fontawesome-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
 	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
@@ -75,6 +78,7 @@
 											<th>nombre de semilla</th>
 											<th>descripcion</th>
 											<th>precio</th>
+											<th>cantidad</th>
 											<th></th>
 										</tr>
 									</thead>
@@ -86,38 +90,29 @@
 											{
 												row = new semilla();
 
-														<tr>
-															<th>@{
-															row.Id = int.Parse(dr["id"].ToString());
-																}
+													<tr>
+														<th>@{row.Id = int.Parse(dr["id"].ToString());}
 															@row.Id
-															</th>
-															<th>@{
-															row.Nombre = dr["nombre"].ToString();
-																}
+														</th>
+														<th>@{row.Nombre = dr["nombre"].ToString();}
 															@row.Nombre
-															</th>
-															<th>@{
-															row.Descripcion = dr["descripcion"].ToString();
-																}
+														</th>
+														<th>@{row.Descripcion = dr["descripcion"].ToString();}
 															@row.Descripcion
-															</th>
-														<th>$@{
-															row.Precio = int.Parse(dr["precio"].ToString());
-															  }
+														</th>
+														<th>$@{row.Precio = int.Parse(dr["precio"].ToString());}
 															@row.Precio
 														</th>
-																	<td>
-																		<!--- <a href="actualizar.php?id=<?php echo $row['ID_SEMILLA'] ?>"><i class="fas fa-edit"></i></a> |--->
-																		<a href="~/Crud/Actualizar/@row.Id"><i class="fas fa-edit"></i></a> |
-																		<a href="~/Crud/Borrar/@row.Id"><i class="fas fa-user-times"></i></a>
-																	</td>
-																</tr>
+														<th>@{row.Stock1 = int.Parse(dr["stock"].ToString());}
+															@row.Stock1
+														</th>
+															<td>
+																<a href="~/Crud/Actualizar/@row.Id"><i class="fas fa-edit"></i></a> |
+																<a href="~/Crud/Borrar/@row.Id"><i class="fas fa-user-times" style="color:red;"></i></a>
+															</td>
+													</tr>
 											}
-										}
-											
-											
-											
+										}		
 										</tbody>
 									</table>
 								</div>
@@ -134,25 +129,31 @@
 									<div class="form-group row text-center">
 										<label class="col-lg-4 col-form-label form-control-label">Codigo semilla:</label>
 										<div class="col-lg-6 text-center">
-											<input class="form-control" type="text" required name="cod">
+											<input class="form-control" type="number" required name="cod">
 										</div>
 									</div>
 									<div class="form-group row text-center">
 										<label class="col-lg-4 col-form-label form-control-label">nombre de semilla:</label>
 										<div class="col-lg-6 text-center">
-											<input class="form-control" type="text" name="nombre">
+											<input class="form-control" type="text" required name="nombre">
 										</div>
 									</div>
 									<div class="form-group row text-center">
 										<label class="col-lg-4 col-form-label form-control-label">descripcion:</label>
 										<div class="col-lg-6 text-center">
-											<textarea name="descrip" class="form-control"></textarea>
+											<textarea name="descrip" required class="form-control"></textarea>
 										</div>
 									</div>
 									<div class="form-group row text-center">
 										<label class="col-lg-4 col-form-label form-control-label">precio:</label>
 										<div class="col-lg-6 text-center">
-											<input class="form-control" type="text" name="precio">
+											<input class="form-control" type="text" required name="precio">
+										</div>
+									</div>
+									<div class="form-group row text-center">
+										<label class="col-lg-4 col-form-label form-control-label">cantidad:</label>
+										<div class="col-lg-6 text-center">
+											<input class="form-control" type="number" required name="Stock">
 										</div>
 									</div>
 									<div class="form-group row">
