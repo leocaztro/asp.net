@@ -12,52 +12,11 @@ namespace sitioweb.Controllers
         }
         public IActionResult Actualizar(int id)
         {
-            return View(id);
+            semilla s = new();
+            s.Id = id;
+
+            return View();
         }
-
-        //public IActionResult Actualizar()
-        //{
-
-        //    //MySqlDataReader? reader = null;
-        //    //string sql = "SELECT id, nombre, descripcion, precio FROM semilla WHERE codigo LIKE '" + id + "' LIMIT 1";
-        //    //MySqlConnection conexionBD = Conexion.Connexion();
-        //    //conexionBD.Open();
-        //    //try
-        //    //{
-        //    //    MySqlCommand comando = new MySqlCommand(sql, conexionBD);
-        //    //    reader = comando.ExecuteReader();
-        //    //    semilla row = null;
-        //    //    if (reader.HasRows)
-        //    //    {
-        //    //        while (reader.Read())
-        //    //        {
-        //    //            row = new semilla();
-
-        //    //            row.Id = int.Parse(reader.GetString(0));
-        //    //            row.Nombre = reader.GetString(1);
-        //    //            row.Descripcion = reader.GetString(2);
-        //    //            row.Precio = int.Parse(reader.GetString(3));
-        //    //            return View(row);
-        //    //        }
-        //    //    }
-        //    //    else
-        //    //    {
-        //    //        Console.WriteLine("No se encontraron registros");
-        //    //        return RedirectToAction("Index", "Crud");
-        //    //    }
-        //    //}
-        //    //catch (MySqlException execp)
-        //    //{
-        //    //    Console.WriteLine("error al buscar " + execp.Message);
-        //    //    return RedirectToAction("Index", "Crud");
-        //    //}
-        //    //finally
-        //    //{
-        //    //    conexionBD.Close();
-        //    //}
-        //    return View();
-        //}
-
         [HttpPost]
         public IActionResult ingresar(int cod, String nombre, String descrip, int precio, int Stock)
         {

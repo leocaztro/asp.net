@@ -106,10 +106,10 @@
 														<th>@{row.Stock1 = int.Parse(dr["stock"].ToString());}
 															@row.Stock1
 														</th>
-															<td>
+															<th>
 																<a href="~/Crud/Actualizar/@row.Id"><i class="fas fa-edit"></i></a> |
 																<a href="~/Crud/Borrar/@row.Id"><i class="fas fa-user-times" style="color:red;"></i></a>
-															</td>
+															</th>
 													</tr>
 											}
 										}		
@@ -129,7 +129,7 @@
 									<div class="form-group row text-center">
 										<label class="col-lg-4 col-form-label form-control-label">Codigo semilla:</label>
 										<div class="col-lg-6 text-center">
-											<input class="form-control" type="number" required name="cod">
+											<input class="form-control" type="number" required min="1" max="100" name="cod">
 										</div>
 									</div>
 									<div class="form-group row text-center">
@@ -141,7 +141,7 @@
 									<div class="form-group row text-center">
 										<label class="col-lg-4 col-form-label form-control-label">descripcion:</label>
 										<div class="col-lg-6 text-center">
-											<textarea name="descrip" required class="form-control"></textarea>
+											<textarea name="descrip" required minlength="10" maxlength="100" class="form-control"></textarea>
 										</div>
 									</div>
 									<div class="form-group row text-center">
@@ -153,7 +153,7 @@
 									<div class="form-group row text-center">
 										<label class="col-lg-4 col-form-label form-control-label">cantidad:</label>
 										<div class="col-lg-6 text-center">
-											<input class="form-control" type="number" required name="Stock">
+											<input class="form-control" type="number" required min="1" max="100" name="Stock">
 										</div>
 									</div>
 									<div class="form-group row">

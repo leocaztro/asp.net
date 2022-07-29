@@ -1,10 +1,12 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
-    Layout = null;
+	Layout = null;
 	@using sitioweb.Models;
 	@using MySql.Data.MySqlClient;
+	@using sitioweb.Controllers;
+
+	CrudController cr = new CrudController();
+	
 
 	int codigo = ViewData.Model;
 
@@ -12,9 +14,9 @@
 	string sql = "SELECT id, codigo, nombre, descripcion, precio, cantidad FROM productos WHERE codigo LIKE '" + codigo + "' LIMIT 1";
 	MySqlCommand cmd = new(sql, conexionDB);
 	conexionDB.Open();
-	MySqlDataReader reader = null;
+	MySqlDataReader? reader = null;
 	reader = cmd.ExecuteReader();
-	semilla row = null;
+	semilla? row = null;
 	row = new semilla();
 	row.Id = int.Parse(reader.GetString(0));
     row.Nombre = reader.GetString(1);
